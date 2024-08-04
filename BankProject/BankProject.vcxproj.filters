@@ -19,4 +19,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
