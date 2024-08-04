@@ -13,9 +13,18 @@ double ReadDoubleNumber(string Message) {
 string ReadString(string Message) {
 	string Text;
 	cout << Message;
-	getline(cin, Text);
+	// Usage of std::ws will extract allthe whitespace character
+	getline(cin >> ws, Text);
 	return Text;
 }
+string  JoinString(vector<string> listWords, string delim = " ") {
+	string S1 = "";
+	for (string i : listWords)
+	{
+		S1 += i + delim;
+	}
+	return S1.substr(0, S1.length() - (delim.length()));
+};
 vector<string> SplitString(string S1, string delim = " ") {
 
 	int position = 0;
@@ -38,7 +47,7 @@ void Tabs(int num) {
 		cout << '\t';
 	}
 }
-sClient ConvertLineToRecord(string strClientRecord, string Seperator = "#%&#") {
+sClient ConvertLineToRecord(string strClientRecord, string Seperator) {
 	vector<string> sListOfRecord = SplitString(strClientRecord, Seperator);
 	sClient Client;
 	Client.AccountNumber = sListOfRecord[0];
@@ -60,18 +69,79 @@ void DataFromFileToVector(string path, vector<string>& vFile) {
 		MyFile.close();
 	}
 }
-void ReadFileByVector(vector<string>& vFile) {
-	for (string& Line : vFile) {
-		if (!Line.empty())
-		{
-			sClient Client = ConvertLineToRecord(Line);
-			PrintClient(Client);
-			cout << endl;
-		}
+void AddDataToFile(string pathFile, string Data) {
+	fstream MyFile;
+	MyFile.open(pathFile, ios::out | ios::app);
+	if (MyFile.is_open()) {
+		MyFile << Data << endl;
+		MyFile.close();
 	}
+}
+string ConvertRecordToLine(sClient Client, string Seperator) {
+	string strClientRecord = "";
+	strClientRecord += Client.AccountNumber + Seperator;
+	strClientRecord += Client.PinCode + Seperator;
+	strClientRecord += Client.Name + Seperator;
+	strClientRecord += Client.Phone + Seperator;
+	strClientRecord += to_string(Client.AccountBalance);
+	return strClientRecord;
+}
+string  ReadClientAccountNumber() {
+	string  AccountNumber = "";
+	cout << "\nPlease enter AccountNumber? ";
+	cin >> AccountNumber;
+	return AccountNumber;
+}
+sClient ConvertLinetoRecord(string Line, string Seperator) {
+	sClient Client;
+	vector<string > vClientData;
+	vClientData = SplitString(Line, Seperator);
+	Client.AccountNumber = vClientData[0];
+	Client.PinCode = vClientData[1];
+	Client.Name = vClientData[2];
+	Client.Phone = vClientData[3];
+	Client.AccountBalance = stod(vClientData[4]);
+	//cast string  to double
+	return Client;
 
-	cout << "\n_______________________________________________________";
-	cout << "_________________________________________\n" << endl;
+}
+vector <sClient> LoadCleintsDataFromFile(string FileName) {
+	vector <sClient> vClients;
+	fstream MyFile;
+	MyFile.open(FileName, ios::in);
+	//read Mode
+	if (MyFile.is_open()) {
+		string  Line;
+		sClient Client;
+		while (getline(MyFile, Line)) {
+			Client = ConvertLinetoRecord(Line, Seperator);
+			vClients.push_back(Client);
+		}
+		MyFile.close();
+	} return vClients;
+}
+void PrintClientCard(sClient Client) {
+	cout << "\nThe following are the client details:\n";
+	cout << "\nAccout Number: " << Client.AccountNumber;
+	cout << "\nPin Code     : " << Client.PinCode;
+	cout << "\nName         : " << Client.Name;
+	cout << "\nPhone        : " << Client.Phone;
+	cout << "\nAccount Balance: " << Client.AccountBalance;
+}
+vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients) {
+	fstream MyFile;
+
+	MyFile.open(FileName, ios::out);
+	//overwrite
+	string  DataLine;
+	if (MyFile.is_open()) {
+		for (sClient C : vClients) {
+			if (C.MarkForDelete == false) {
+				DataLine = ConvertRecordToLine(C, Seperator);
+				MyFile << DataLine << endl;
+			}
+		}         MyFile.close();
+	} return vClients;
 }
 void pop() {
 	string str = "";

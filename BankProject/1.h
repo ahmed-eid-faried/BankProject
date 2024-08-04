@@ -7,11 +7,6 @@
 #include "model.h"
 #include "libs.h"
 using namespace std;
-
-
-
-
-
 void PrintClientHeaderTable(vector<string> vFile) {
 	cout << "\n\t\t\t\t\tClient List (" << vFile.size() << ") Client(s).";
 	cout << "\n_______________________________________________________";
@@ -31,11 +26,23 @@ void PrintClient(sClient Client) {
 	cout << "| " << setw(12) << left << Client.Phone;
 	cout << "| " << setw(12) << left << Client.AccountBalance;
 };
+void ReadFileByVector(vector<string>& vFile) {
+	for (string& Line : vFile) {
+		if (!Line.empty())
+		{
+			sClient Client = ConvertLineToRecord(Line, Seperator);
+			PrintClient(Client);
+			cout << endl;
+		}
+	}
 
+	cout << "\n_______________________________________________________";
+	cout << "_________________________________________\n" << endl;
+}
 
 void ShowClients() {
 	vector<string> vFile;
-	DataFromFileToVector("clients.txt", vFile);
+	DataFromFileToVector(ClientsFileName, vFile);
 	PrintClientHeaderTable(vFile);
 	ReadFileByVector(vFile);
 	cout << endl;
