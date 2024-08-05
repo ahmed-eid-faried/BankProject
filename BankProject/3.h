@@ -49,6 +49,10 @@ bool DeleteClientByAccountNumber(string AccountNumber, vector<sClient>& vClients
 
 
 void DeleteClient() {
+
+	cout << "====================================================" << endl;
+	cout << "\t\tDelete Client\n";
+	cout << "====================================================" << endl;
 	vector <sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
 	string AccountNumber = ReadClientAccountNumber();
 	DeleteClientByAccountNumber(AccountNumber, vClients);

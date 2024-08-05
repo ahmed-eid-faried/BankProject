@@ -47,6 +47,9 @@ void Routing(enMainMenueOptions Option) {
 		BackToMainMenue();
 	case enMainMenueOptions::eExiting:
 		cout << "Exiting the CLI" << endl;
+		cout << "====================================================" << endl;
+		cout << "\t\tEND PROGRAM:(\n";
+		cout << "====================================================" << endl;
  		exit(0);
 	default:
 		break;

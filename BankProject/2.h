@@ -32,13 +32,16 @@ void AddClients() {
 	do
 	{
 		system("cls");
-		cout << "Adding New Client: " << endl;
-		AddClient();
+		cout << "====================================================" << endl;
+		cout << "\t\tAdd New Client\n";
+		cout << "====================================================" << endl;		AddClient();
 		cout << "\nClient Added Successfully, do you want to add more clients? Y/N? ";
 		cin >> AddMore;
 	} while (toupper(AddMore) == 'Y');
 }
 void AddNewClient() {
+
+
 	AddClients();
 	cout << endl;
 	 

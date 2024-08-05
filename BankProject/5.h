@@ -33,6 +33,9 @@ void FindClientByAccountNumber(vector<string>& vFile, string AccountNumber) {
 	cout << "_________________________________________\n" << endl;
 }
 void FindClient() {
+	cout << "====================================================" << endl;
+	cout << "\t\Find Client\n";
+	cout << "====================================================" << endl;
 	string AccountNumber = ReadString("What is your AccountNumber?\n");
 	vector<string> vFile;
 	DataFromFileToVector("clients.txt", vFile);

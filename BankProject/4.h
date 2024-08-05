@@ -69,6 +69,9 @@ bool UpdateClientByAccountNumber(string AccountNumber, vector<sClient>& vClients
 
 
 void UpdateClientInfo() {
+	cout << "====================================================" << endl;
+	cout << "\t\tUpdate Client\n";
+	cout << "====================================================" << endl;
 	vector <sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
 	string AccountNumber = ReadClientAccountNumber();
 	UpdateClientByAccountNumber(AccountNumber, vClients);
