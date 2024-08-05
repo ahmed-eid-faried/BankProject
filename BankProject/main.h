@@ -23,7 +23,7 @@ int ReadNumberInRange(int From, int To, string Message = "ENTER NUMBER") {
 	return NUM;
 }
 void Routing(enMainMenueOptions Option) {
-	switch (Num)
+	switch (Option)
 	{
 	case enMainMenueOptions::eShowClients:
 		system("cls");
@@ -47,7 +47,7 @@ void Routing(enMainMenueOptions Option) {
 		BackToMainMenue();
 	case enMainMenueOptions::eExiting:
 		cout << "Exiting the CLI" << endl;
-		exit(0);
+ 		exit(0);
 	default:
 		break;
 	}
