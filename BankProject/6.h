@@ -1,15 +1,9 @@
 #pragma once
-#include "1.h"
-#include "2.h"
-#include "3.h"
-#include "4.h"
-#include "5.h"
-#include "libs.h"
-#include "6.h"
 #include "deposit.h"
 #include "withdraw.h"
 #include "total_balances.h"
 using namespace std;
+void ShowTransactionsMenue();
 enum enTransactionsMenueOptions {
 	eDeposit = 1,
 	eWithdraw = 2,
@@ -40,7 +34,9 @@ void RoutingTransactions(enTransactionsMenueOptions Option) {
 		TotalBalances();
 		BackToTransactionsMenue();
 	case enTransactionsMenueOptions::eMainMenue:
-		BackToMainMenue();
+		//BackToMainMenue();
+		system("cls"); // Clear the screen
+		ShowMainMenue();
 	default:
 		break;
 	}

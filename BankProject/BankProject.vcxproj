@@ -136,9 +136,12 @@
     <ClInclude Include="4.h" />
     <ClInclude Include="5.h" />
     <ClInclude Include="6.h" />
+    <ClInclude Include="deposit.h" />
     <ClInclude Include="libs.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="total_balances.h" />
+    <ClInclude Include="withdraw.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
