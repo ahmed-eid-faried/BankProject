@@ -7,10 +7,10 @@
 using namespace std;
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
-void StartApp(); // Declare StartApp here
+void ShowMainMenue(); // Declare ShowMainMenue here
 int ReadNumberInRange(int From, int To, string Message);
 void Routing(short Num);
-void pop();
+void  
 double ReadDoubleNumber(string Message);
 string ReadString(string Message);
 string JoinString(vector<string> listWords, string delim);
@@ -174,10 +174,11 @@ vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients
 	} return vClients;
 }
 
-void pop() {
+void BackToMainMenue() {
 	cout << "Press any key to go back to Main Menu...";
-	cin.ignore(); // Clear the input buffer
-	cin.get();    // Wait for a key press
-	system("cls"); // Clear the screen
-	StartApp();
+	//cin.ignore(); // Clear the input buffer
+	//cin.get();    // Wait for a key press
+	//system("cls"); // Clear the screen
+	system("pause>0");
+	ShowMainMenue();
 }

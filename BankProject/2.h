@@ -41,7 +41,7 @@ void AddClients() {
 void AddNewClient() {
 	AddClients();
 	cout << endl;
-	pop();
+	 
 }
 
 

@@ -52,5 +52,5 @@ void DeleteClient() {
 	vector <sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
 	string AccountNumber = ReadClientAccountNumber();
 	DeleteClientByAccountNumber(AccountNumber, vClients);
-	pop();
+	 
 }

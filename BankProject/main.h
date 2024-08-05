@@ -6,6 +6,14 @@
 #include "5.h"
 #include "libs.h"
 using namespace std;
+enum enMainMenueOptions {
+	eShowClients = 1,
+	eAddNewClient = 2,
+	eDeleteClient = 3,
+	eUpdateClientInfo = 4,
+	eFindClient = 5,
+	eExiting = 6,
+};
 int ReadNumberInRange(int From, int To, string Message = "ENTER NUMBER") {
 	int NUM;
 	do {
@@ -14,33 +22,37 @@ int ReadNumberInRange(int From, int To, string Message = "ENTER NUMBER") {
 	} while (NUM < From || NUM > To);
 	return NUM;
 }
-void Routing(short Num) {
+void Routing(enMainMenueOptions Option) {
 	switch (Num)
 	{
-	case 1:
+	case enMainMenueOptions::eShowClients:
 		system("cls");
 		ShowClients();
-	case 2:
+		BackToMainMenue();
+	case enMainMenueOptions::eAddNewClient:
 		system("cls");
 		AddNewClient();
-	case 3:
+		BackToMainMenue();
+	case enMainMenueOptions::eDeleteClient:
 		system("cls");
 		DeleteClient();
-	case 4:
+		BackToMainMenue();
+	case enMainMenueOptions::eUpdateClientInfo:
 		system("cls");
 		UpdateClientInfo();
-	case 5:
+		BackToMainMenue();
+	case enMainMenueOptions::eFindClient:
 		system("cls");
 		FindClient();
-	case 6:
+		BackToMainMenue();
+	case enMainMenueOptions::eExiting:
 		cout << "Exiting the CLI" << endl;
 		exit(0);
 	default:
 		break;
 	}
 }
-
-void StartApp() {
+void ShowMainMenue() {
 	cout << "====================================================" << endl;
 	cout << "\t\tMain Menue Screen\n";
 	cout << "====================================================" << endl;
@@ -51,6 +63,6 @@ void StartApp() {
 	cout << "\t   [5] Find Client." << endl;
 	cout << "\t   [6] Exit." << endl;
 	cout << "====================================================" << endl;
-	short Num = ReadNumberInRange(1, 6, "Choose what do you want to do? [1 to 6]? ");
-	Routing(Num);
+	enMainMenueOptions Option = (enMainMenueOptions)ReadNumberInRange(1, 6, "Choose what do you want to do? [1 to 6]? ");
+	Routing(Option);
 }

@@ -48,5 +48,5 @@ void ShowClients() {
 	PrintClientHeaderTable(vFile);
 	ReadFileByVector(vFile);
 	cout << endl;
-	pop();
+	 
 }

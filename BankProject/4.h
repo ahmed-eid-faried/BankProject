@@ -72,5 +72,5 @@ void UpdateClientInfo() {
 	vector <sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
 	string AccountNumber = ReadClientAccountNumber();
 	UpdateClientByAccountNumber(AccountNumber, vClients);
-	pop();
+	 
 }

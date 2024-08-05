@@ -3,6 +3,6 @@
 
 int main()
 {
-	StartApp();
+	ShowMainMenue();
 	return 0;
 }

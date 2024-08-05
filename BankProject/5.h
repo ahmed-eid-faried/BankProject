@@ -39,7 +39,7 @@ void FindClient() {
 	PrintClientHeaderTable(vFile);
 	FindClientByAccountNumber(vFile, AccountNumber);
 	cout << endl;
-	pop();
+	 
 }
 
 
