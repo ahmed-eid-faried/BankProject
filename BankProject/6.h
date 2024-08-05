@@ -10,6 +10,7 @@ enum enTransactionsMenueOptions {
 	eTotalBalances = 3,
 	eMainMenue = 4,
 };
+
 void BackToTransactionsMenue() {
 	cout << "Press any key to go back to Main Menu...";
 	cin.ignore(); // Clear the input buffer
@@ -34,8 +35,7 @@ void RoutingTransactions(enTransactionsMenueOptions Option) {
 		TotalBalances();
 		BackToTransactionsMenue();
 	case enTransactionsMenueOptions::eMainMenue:
-		//BackToMainMenue();
-		system("cls"); // Clear the screen
+ 		system("cls");  
 		ShowMainMenue();
 	default:
 		break;
