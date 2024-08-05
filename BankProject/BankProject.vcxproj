@@ -135,6 +135,7 @@
     <ClInclude Include="3.h" />
     <ClInclude Include="4.h" />
     <ClInclude Include="5.h" />
+    <ClInclude Include="6.h" />
     <ClInclude Include="libs.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="model.h" />
