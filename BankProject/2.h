@@ -5,6 +5,8 @@
 #include <vector>
 #include <iomanip>
 #include<fstream>
+#include "libs.h"
+
 using namespace std;
 
 sClient ReadNewClient() {

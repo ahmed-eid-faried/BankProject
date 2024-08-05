@@ -1,22 +1,47 @@
+#pragma once
 #include <string>
 #include <iostream>
 #include <vector>
 #include "model.h"
-#include "1.h"
+
 using namespace std;
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+void StartApp(); // Declare StartApp here
+int ReadNumberInRange(int From, int To, string Message);
+void Routing(short Num);
+void pop();
+double ReadDoubleNumber(string Message);
+string ReadString(string Message);
+string JoinString(vector<string> listWords, string delim);
+vector<string> SplitString(string S1, string delim);
+void Tabs(int num);
+sClient ConvertLineToRecord(string strClientRecord, string Seperator);
+void DataFromFileToVector(string path, vector<string>& vFile);
+void AddDataToFile(string pathFile, string Data);
+//sClient ReadUpdateClient(string AccountNumber);
+string ConvertRecordToLine(sClient Client, string Seperator);
+string ReadClientAccountNumber();
+sClient ConvertLinetoRecord(string Line, string Seperator);
+vector<sClient> LoadCleintsDataFromFile(string FileName);
+void PrintClientCard(sClient Client);
+vector<sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients);
+/////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 double ReadDoubleNumber(string Message) {
 	double Num;
 	cout << Message;
 	cin >> Num;
 	return Num;
 }
+
 string ReadString(string Message) {
 	string Text;
 	cout << Message;
-	// Usage of std::ws will extract allthe whitespace character
 	getline(cin >> ws, Text);
 	return Text;
 }
+
 string  JoinString(vector<string> listWords, string delim = " ") {
 	string S1 = "";
 	for (string i : listWords)
@@ -57,6 +82,7 @@ sClient ConvertLineToRecord(string strClientRecord, string Seperator) {
 	Client.AccountBalance = stod(sListOfRecord[4]);
 	return Client;
 }
+
 void DataFromFileToVector(string path, vector<string>& vFile) {
 	fstream MyFile;
 	MyFile.open(path, ios::in);//read Mode  
@@ -77,6 +103,7 @@ void AddDataToFile(string pathFile, string Data) {
 		MyFile.close();
 	}
 }
+
 string ConvertRecordToLine(sClient Client, string Seperator) {
 	string strClientRecord = "";
 	strClientRecord += Client.AccountNumber + Seperator;
@@ -137,17 +164,20 @@ vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients
 	if (MyFile.is_open()) {
 		for (sClient C : vClients) {
 			if (C.MarkForDelete == false) {
+
 				DataLine = ConvertRecordToLine(C, Seperator);
 				MyFile << DataLine << endl;
+
 			}
-		}         MyFile.close();
+		}
+		MyFile.close();
 	} return vClients;
 }
+
 void pop() {
-	string str = "";
-	cout << "Press any key to go back to Main Menue...";
-	cin >> str;
-	if (str != "") {
-		system("pos");
-	}
+	cout << "Press any key to go back to Main Menu...";
+	cin.ignore(); // Clear the input buffer
+	cin.get();    // Wait for a key press
+	system("cls"); // Clear the screen
+	StartApp();
 }

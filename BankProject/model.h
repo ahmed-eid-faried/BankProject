@@ -11,4 +11,5 @@ struct sClient {
 	string Phone;
 	double AccountBalance;
 	bool MarkForDelete = false;
+	bool MarkForUpdate = false;
 };

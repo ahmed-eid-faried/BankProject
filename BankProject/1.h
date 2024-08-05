@@ -6,6 +6,8 @@
 #include <iomanip>
 #include "model.h"
 #include "libs.h"
+
+
 using namespace std;
 void PrintClientHeaderTable(vector<string> vFile) {
 	cout << "\n\t\t\t\t\tClient List (" << vFile.size() << ") Client(s).";

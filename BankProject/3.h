@@ -1,9 +1,10 @@
 #include<iostream>
 #include<fstream>
-#include<string >
+#include<string>
 #include<vector>
 #include<iomanip>
-#include "model.h"
+#include "libs.h"
+
 using namespace std;
 
 bool FindClientByAccountNumber(string AccountNumber, vector<sClient> vClients, sClient& Client) {
@@ -51,5 +52,5 @@ void DeleteClient() {
 	vector <sClient> vClients = LoadCleintsDataFromFile(ClientsFileName);
 	string AccountNumber = ReadClientAccountNumber();
 	DeleteClientByAccountNumber(AccountNumber, vClients);
-
+	pop();
 }
