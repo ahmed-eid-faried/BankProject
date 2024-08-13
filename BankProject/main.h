@@ -6,6 +6,7 @@
 #include "5.h"
 #include "libs.h"
 #include "6.h"
+#include "7.h"
 using namespace std;
 enum enMainMenueOptions {
 	eShowClients = 1,
@@ -14,7 +15,8 @@ enum enMainMenueOptions {
 	eUpdateClientInfo = 4,
 	eFindClient = 5,
 	eTransactions = 6,
-	eExiting = 7,
+	eMangeUsers = 7,
+	eExiting = 8,
 };
 int ReadNumberInRange(int From, int To, string Message = "ENTER NUMBER") {
 	int NUM;
@@ -53,14 +55,18 @@ void Routing(enMainMenueOptions Option) {
 		Transactions();
 		BackToMainMenue();
 
-		 
+	case enMainMenueOptions::eMangeUsers:
+		system("cls");
+		MangeUsers();
+		BackToMainMenue();
+
 
 	case enMainMenueOptions::eExiting:
 		cout << "Exiting the CLI" << endl;
 		cout << "====================================================" << endl;
 		cout << "\t\tEND PROGRAM:(\n";
 		cout << "====================================================" << endl;
- 		exit(0);
+		exit(0);
 	default:
 		break;
 	}
@@ -75,8 +81,9 @@ void ShowMainMenue() {
 	cout << "\t   [4] Update Client info." << endl;
 	cout << "\t   [5] Find Client." << endl;
 	cout << "\t   [6] Transactions Menue." << endl;
-	cout << "\t   [7] Exit." << endl;
+	cout << "\t   [7] Mange Users Menue." << endl;
+	cout << "\t   [8] Exit." << endl;
 	cout << "====================================================" << endl;
-	enMainMenueOptions Option = (enMainMenueOptions)ReadNumberInRange(1, 7, "Choose what do you want to do? [1 to 6]? ");
+	enMainMenueOptions Option = (enMainMenueOptions)ReadNumberInRange(1, 8, "Choose what do you want to do? [1 to 8]? ");
 	Routing(Option);
 }

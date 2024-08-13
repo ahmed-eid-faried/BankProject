@@ -33,7 +33,12 @@ double ReadDoubleNumber(string Message) {
 	cin >> Num;
 	return Num;
 }
-
+int ReadNumber(string Message) {
+	int Num;
+	cout << Message;
+	cin >> Num;
+	return Num;
+}
 string ReadString(string Message) {
 	string Text;
 	cout << Message;
@@ -81,6 +86,14 @@ sClient ConvertLineToRecord(string strClientRecord, string Seperator) {
 	Client.AccountBalance = stod(sListOfRecord[4]);
 	return Client;
 }
+sUser ConvertLineToUserRecord(string strUserRecord, string Seperator) {
+	vector<string> sListOfRecord = SplitString(strUserRecord, Seperator);
+	sUser User;
+	User.Name = sListOfRecord[0];
+	User.Password = sListOfRecord[1];
+	User.Permsions = stoi(sListOfRecord[2]);
+	return User;
+}
 
 void DataFromFileToVector(string path, vector<string>& vFile) {
 	fstream MyFile;
@@ -111,6 +124,13 @@ string ConvertRecordToLine(sClient Client, string Seperator) {
 	strClientRecord += Client.Phone + Seperator;
 	strClientRecord += to_string(Client.AccountBalance);
 	return strClientRecord;
+}
+string ConvertRecordToLineUser(sUser User, string Seperator) {
+	string strUserRecord = "";
+	strUserRecord += User.Name + Seperator;
+	strUserRecord += User.Password + Seperator;
+	strUserRecord += to_string(User.Permsions);
+	return strUserRecord;
 }
 string  ReadClientAccountNumber() {
 	string  AccountNumber = "";

@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 const string  ClientsFileName = "clients.txt";
+const string  UsersFileName = "users.txt";
 const string  Seperator = "#%&#";
 
 struct sClient {
@@ -10,6 +11,14 @@ struct sClient {
 	string Name;
 	string Phone;
 	double AccountBalance;
+	bool MarkForDelete = false;
+	bool MarkForUpdate = false;
+};
+
+struct sUser {
+	string  Name;
+	string  Password;
+	int Permsions;
 	bool MarkForDelete = false;
 	bool MarkForUpdate = false;
 };
