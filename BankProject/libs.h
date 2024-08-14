@@ -5,6 +5,12 @@
 #include "model.h"
 
 using namespace std;
+bool ReadBool(string Message) {
+	char AddMore = 'Y';
+	cout << Message << " Y/N? " << endl;
+	cin >> AddMore;
+	return (toupper(AddMore) == 'Y');
+}
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
 void ShowMainMenue(); // Declare ShowMainMenue here

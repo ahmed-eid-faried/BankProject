@@ -10,7 +10,8 @@ sUser ReadUpdateUser() {
 	sUser User;
 	User.Name = ReadString("ENTER YOUR Name: ");
 	User.Password = ReadString("ENTER YOUR Password: ");
-	User.Permissions  = ReadNumber("ENTER YOUR Permissions : ");
+	bool State = ReadBool("ARE YOU ENTER Permissions ?");
+	User.Permissions = State ? ReadPermissions() : 0;
 	return User;
 };
 bool MarkUserForUpdateByName(string Name, vector <sUser>& vUsers) {

@@ -6,6 +6,7 @@
 #include <iomanip>
 #include<fstream>
 #include "libs.h"
+#include "Permsions.h"
 
 using namespace std;
 
@@ -13,7 +14,8 @@ sUser ReadNewUser() {
 	sUser user;
 	user.Name = ReadString("ENTER YOUR Name: ");
 	user.Password = ReadString("ENTER YOUR Password: ");
-	user.Permissions  = ReadNumber("ENTER YOUR Permissions : ");
+	bool State = ReadBool("ARE YOU ENTER Permissions ?");
+	user.Permissions = State ? ReadPermissions() : 0;
 	return user;
 };
 void AddUser() {
