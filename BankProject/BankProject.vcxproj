@@ -145,6 +145,7 @@
     <ClInclude Include="ListUsers.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="Permsions.h" />
     <ClInclude Include="total_balances.h" />
     <ClInclude Include="UpdateUser.h" />
     <ClInclude Include="withdraw.h" />

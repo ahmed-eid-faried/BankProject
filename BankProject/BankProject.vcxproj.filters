@@ -80,5 +80,8 @@
     <ClInclude Include="FindUser.h">
       <Filter>Header Files\mange_users</Filter>
     </ClInclude>
+    <ClInclude Include="Permsions.h">
+      <Filter>Header Files\mange_users</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

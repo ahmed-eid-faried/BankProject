@@ -91,7 +91,7 @@ sUser ConvertLineToUserRecord(string strUserRecord, string Seperator) {
 	sUser User;
 	User.Name = sListOfRecord[0];
 	User.Password = sListOfRecord[1];
-	User.Permsions = stoi(sListOfRecord[2]);
+	User.Permissions  = stoi(sListOfRecord[2]);
 	return User;
 }
 
@@ -129,7 +129,7 @@ string ConvertRecordToLineUser(sUser User, string Seperator) {
 	string strUserRecord = "";
 	strUserRecord += User.Name + Seperator;
 	strUserRecord += User.Password + Seperator;
-	strUserRecord += to_string(User.Permsions);
+	strUserRecord += to_string(User.Permissions );
 	return strUserRecord;
 }
 string  ReadClientAccountNumber() {
@@ -194,7 +194,7 @@ void PrintUserCard(sUser User) {
 	cout << "\nThe following are the client details:\n";
 	cout << "\nName         : " << User.Name;
 	cout << "\nPassword     : " << User.Password;
-	cout << "\nPermsions    : " << User.Permsions;
+	cout << "\nPermissions     : " << User.Permissions ;
 }
 vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients) {
 	fstream MyFile;

@@ -14,14 +14,14 @@ void PrintUserHeaderTable(vector<string> vFile) {
 	cout << "_________________________________________\n" << endl;
 	cout << "| " << left << setw(15) << "Name";
 	cout << "| " << left << setw(10) << "Password";
-	cout << "| " << left << setw(40) << "Permsions";
+	cout << "| " << left << setw(40) << "Permissions ";
 	cout << "\n_______________________________________________________";
 	cout << "_________________________________________\n" << endl;
 };
 void PrintUser(sUser User) {
 	cout << "| " << setw(15) << left << User.Name;
 	cout << "| " << setw(10) << left << User.Password;
-	cout << "| " << setw(40) << left << User.Permsions;
+	cout << "| " << setw(40) << left << User.Permissions ;
 };
 void ReadFileByVectorUsers(vector<string>& vFile) {
 	for (string& Line : vFile) {

@@ -13,7 +13,7 @@ sUser ReadNewUser() {
 	sUser user;
 	user.Name = ReadString("ENTER YOUR Name: ");
 	user.Password = ReadString("ENTER YOUR Password: ");
-	user.Permsions = ReadNumber("ENTER YOUR Permsions: ");
+	user.Permissions  = ReadNumber("ENTER YOUR Permissions : ");
 	return user;
 };
 void AddUser() {
