@@ -166,6 +166,22 @@ vector <sClient> LoadCleintsDataFromFile(string FileName) {
 		MyFile.close();
 	} return vClients;
 }
+ 
+vector <sUser> LoadUsersDataFromFile(string FileName) {
+	vector <sUser> vUsers;
+	fstream MyFile;
+	MyFile.open(FileName, ios::in);
+	//read Mode
+	if (MyFile.is_open()) {
+		string  Line;
+		sUser User;
+		while (getline(MyFile, Line)) {
+			User = ConvertLineToUserRecord(Line, Seperator);
+			vUsers.push_back(User);
+		}
+		MyFile.close();
+	} return vUsers;
+}
 void PrintClientCard(sClient Client) {
 	cout << "\nThe following are the client details:\n";
 	cout << "\nAccout Number: " << Client.AccountNumber;
@@ -173,6 +189,12 @@ void PrintClientCard(sClient Client) {
 	cout << "\nName         : " << Client.Name;
 	cout << "\nPhone        : " << Client.Phone;
 	cout << "\nAccount Balance: " << Client.AccountBalance;
+}
+void PrintUserCard(sUser User) {
+	cout << "\nThe following are the client details:\n";
+	cout << "\nName         : " << User.Name;
+	cout << "\nPassword     : " << User.Password;
+	cout << "\nPermsions    : " << User.Permsions;
 }
 vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients) {
 	fstream MyFile;
@@ -192,7 +214,24 @@ vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients
 		MyFile.close();
 	} return vClients;
 }
+vector <sUser> SaveUsersDataToFile(string FileName, vector<sUser> vUsers) {
+	fstream MyFile;
 
+	MyFile.open(FileName, ios::out);
+	//overwrite
+	string  DataLine;
+	if (MyFile.is_open()) {
+		for (sUser C : vUsers) {
+			if (C.MarkForDelete == false) {
+
+				DataLine = ConvertRecordToLineUser(C, Seperator);
+				MyFile << DataLine << endl;
+
+			}
+		}
+		MyFile.close();
+	} return vUsers;
+}
 void BackToMainMenue() {
 	cout << "Press any key to go back to Main Menu...";
 	cin.ignore(); // Clear the input buffer
