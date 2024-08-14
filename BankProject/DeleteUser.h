@@ -36,7 +36,7 @@ bool DeleteUserByName(string Name, vector<sUser>& vUsers) {
 			MarkUserForDeleteByName(Name, vUsers);
 			SaveUsersDataToFile(UsersFileName, vUsers);
 			//Refresh Users
-			vUsers = LoadCleintsDataFromFile(UsersFileName);
+			vUsers = LoadUsersDataFromFile(UsersFileName);
 			cout << "\n\nUser Deleted Successfully.";
 			return true;
 		}
