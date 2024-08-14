@@ -28,25 +28,24 @@ void RoutingMangeUsers(enMangeUsersMenueOptions Option) {
 	{
 	case enMangeUsersMenueOptions::eListUsers:
 		system("cls");
-		ListUsers();
+		checkPermission(enPermissions::PERMISSION_ListUsers) ? ListUsers() : DeniedPermissions();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::eAddNewUser:
 		system("cls");
 		AddNewUser();
+		checkPermission(enPermissions::PERMISSION_Add) ? AddNewUser() : DeniedPermissions();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::eDeleteUser:
 		system("cls");
-		DeleteUser();
+		checkPermission(enPermissions::PERMISSION_Delete) ? DeleteUser() : DeniedPermissions();
 		BackToMangeUsersMenue();
-
 	case enMangeUsersMenueOptions::eUpdateUser:
 		system("cls");
-		UpdateUser();
+		checkPermission(enPermissions::PERMISSION_Update) ? UpdateUser() : DeniedPermissions();
 		BackToMangeUsersMenue();
-
 	case enMangeUsersMenueOptions::eFindUser:
 		system("cls");
-		FindUser();
+		checkPermission(enPermissions::PERMISSION_Find) ? FindUser() : DeniedPermissions();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::enMainMenue:
 		system("cls");
@@ -55,6 +54,7 @@ void RoutingMangeUsers(enMangeUsersMenueOptions Option) {
 		break;
 	}
 }
+
 void ShowMangeUsersMenue() {
 	cout << "====================================================" << endl;
 	cout << "\t\MangeUsers Menue Screen\n";

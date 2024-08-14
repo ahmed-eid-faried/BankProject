@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+sUser CurrentUser;
 //  ⁄—Ì› enum ··√–Ê‰« 
 enum enPermissions {
 	PERMISSION_ListUsers = 1 << 0, // 000001 -> 1
@@ -9,16 +10,6 @@ enum enPermissions {
 	PERMISSION_Find = 1 << 4, // 010000 -> 16
 	PERMISSION_Transactions = 1 << 5, // 100000 -> 32
 };
-struct sPermissions {
-	enPermissions ListUsers= enPermissions(0);
-	enPermissions Add = enPermissions(0);
-	enPermissions Delete = enPermissions(0);
-	enPermissions Update = enPermissions(0);
-	enPermissions Find = enPermissions(0);
-	enPermissions Transactions = enPermissions(0);
-};
-
-
 
 // œ«·… ·Ê÷⁄ «·√–Ê‰« 
 int setPermissions(sPermissions Permissions) {
@@ -26,7 +17,7 @@ int setPermissions(sPermissions Permissions) {
 }
 
 // œ«·… ·· Õﬁﬁ „‰ «·√–Ê‰« 
-bool checkPermission(int permissions, enPermissions permission) {
+bool checkPermission( enPermissions permission, int permissions = CurrentUser.Permissions) {
 	return (permissions & permission) != 0;
 }
 // œ«·… ·≈÷«›… √–Ê‰«  ÃœÌœ…
@@ -48,6 +39,16 @@ int ReadPermissions() {
 	Permissions.Find = ReadBool("ARE YOU Permission FOR Find USER?") ? enPermissions::PERMISSION_Find : enPermissions(0);
 	Permissions.Transactions = ReadBool("ARE YOU Permission FOR Transactions?") ? enPermissions::PERMISSION_ListUsers : enPermissions(0);
 	return setPermissions(Permissions);
+}
+
+void DeniedPermissions() {
+	cout << "========================================================" << endl;
+	cout << "========================================================" << endl;
+	cout << "Access Denied" << endl;
+	cout << "You don't Have Permiddion To Do This," << endl;
+	cout << "Please Conact Your Admin." << endl;
+	cout << "========================================================" << endl;
+	cout << "========================================================" << endl;
 }
 //
 //void PermissionsExample() {
