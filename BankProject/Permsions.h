@@ -2,55 +2,72 @@
  #include <iostream>
 
 //  ⁄—Ì› enum ··√–Ê‰« 
-enum Permissions {
-    PERMISSION_1 = 1 << 0, // 000001 -> 1
-    PERMISSION_2 = 1 << 1, // 000010 -> 2
-    PERMISSION_3 = 1 << 2, // 000100 -> 4
-    PERMISSION_4 = 1 << 3, // 001000 -> 8
-    PERMISSION_5 = 1 << 4, // 010000 -> 16
-    PERMISSION_6 = 1 << 5, // 100000 -> 32
+enum enPermissions {
+    PERMISSION_ListUsers = 1 << 0, // 000001 -> 1
+    PERMISSION_Add = 1 << 1, // 000010 -> 2
+    PERMISSION_Delete = 1 << 2, // 000100 -> 4
+    PERMISSION_Update = 1 << 3, // 001000 -> 8
+    PERMISSION_Find = 1 << 4, // 010000 -> 16
+    PERMISSION_Transactions = 1 << 5, // 100000 -> 32
 };
 
 // œ«·… ·Ê÷⁄ «·√–Ê‰« 
-int setPermissions(Permissions perm1, Permissions perm2 = Permissions(0), Permissions perm3 = Permissions(0), Permissions perm4 = Permissions(0), Permissions perm5 = Permissions(0), Permissions perm6 = Permissions(0)) {
+int setPermissions(enPermissions perm1, enPermissions perm2 = enPermissions(0), enPermissions perm3 = enPermissions(0), enPermissions perm4 = enPermissions(0), enPermissions perm5 = enPermissions(0), enPermissions perm6 = enPermissions(0)) {
     return perm1 | perm2 | perm3 | perm4 | perm5 | perm6;
 }
 
 // œ«·… ·· Õﬁﬁ „‰ «·√–Ê‰« 
-bool checkPermission(int permissions, Permissions permission) {
+bool checkPermission(int permissions, enPermissions permission) {
     return (permissions & permission) != 0;
 }
+// œ«·… ·≈÷«›… √–Ê‰«  ÃœÌœ…
+int addPermissions(int permissions, enPermissions permToAdd) {
+    return permissions | permToAdd;
+}
+
+// œ«·… ·≈“«·… √–Ê‰« 
+int removePermissions(int permissions, enPermissions permToRemove) {
+    return permissions & ~permToRemove;
+}
+
 
 void PermissionsExample() {
     //  ⁄ÌÌ‰ «·√–Ê‰« 
-    int permissions = setPermissions(PERMISSION_1, PERMISSION_3, PERMISSION_5);
+    int permissions = setPermissions(PERMISSION_ListUsers, PERMISSION_Delete);
 
     // ⁄—÷ «·ﬁÌ„… «·⁄‘—Ì… ··—ﬁ„ «·„Œ“‰
     std::cout << "«·ﬁÌ„… «·⁄‘—Ì… ··√–Ê‰«  «·„Œ“‰…: " << permissions << std::endl;
 
+    // ≈÷«›… ≈–‰ ÃœÌœ
+    permissions = addPermissions(permissions, PERMISSION_Find);
+    std::cout << "«·ﬁÌ„… «·⁄‘—Ì… »⁄œ ≈÷«›… ≈–‰ 5: " << permissions << std::endl;
+
+    // ≈“«·… ≈–‰
+    permissions = removePermissions(permissions, PERMISSION_Delete);
+    std::cout << "«·ﬁÌ„… «·⁄‘—Ì… »⁄œ ≈“«·… ≈–‰ 3: " << permissions << std::endl;
+
     // «· Õﬁﬁ „‰ ≈–‰ „Õœœ »«” Œœ«„ «·œ«·…
-    if (checkPermission(permissions, PERMISSION_1)) {
+    if (checkPermission(permissions, PERMISSION_ListUsers)) {
         std::cout << "«·≈–‰ 1 „›⁄·." << std::endl;
     }
 
-    if (checkPermission(permissions, PERMISSION_2)) {
+    if (checkPermission(permissions, PERMISSION_Add)) {
         std::cout << "«·≈–‰ 2 „›⁄·." << std::endl;
     }
 
-    if (checkPermission(permissions, PERMISSION_3)) {
+    if (checkPermission(permissions, PERMISSION_Delete)) {
         std::cout << "«·≈–‰ 3 „›⁄·." << std::endl;
     }
 
-    if (checkPermission(permissions, PERMISSION_4)) {
+    if (checkPermission(permissions, PERMISSION_Update)) {
         std::cout << "«·≈–‰ 4 „›⁄·." << std::endl;
     }
 
-    if (checkPermission(permissions, PERMISSION_5)) {
+    if (checkPermission(permissions, PERMISSION_Find)) {
         std::cout << "«·≈–‰ 5 „›⁄·." << std::endl;
     }
 
-    if (checkPermission(permissions, PERMISSION_6)) {
+    if (checkPermission(permissions, PERMISSION_Transactions)) {
         std::cout << "«·≈–‰ 6 „›⁄·." << std::endl;
     }
-
  }
