@@ -32,36 +32,32 @@ void Routing(enMainMenueOptions Option) {
 	{
 	case enMainMenueOptions::eShowClients:
 		system("cls");
-		ShowClients();
+		checkPermission(enPermissions::PERMISSION_ListUsers) ? ShowClients() : DeniedPermissions();
 		BackToMainMenue();
 	case enMainMenueOptions::eAddNewClient:
 		system("cls");
-		AddNewClient();
+		checkPermission(enPermissions::PERMISSION_Add) ? AddNewClient() : DeniedPermissions();
 		BackToMainMenue();
 	case enMainMenueOptions::eDeleteClient:
 		system("cls");
-		DeleteClient();
+		checkPermission(enPermissions::PERMISSION_Delete) ? DeleteClient() : DeniedPermissions();
 		BackToMainMenue();
 	case enMainMenueOptions::eUpdateClientInfo:
 		system("cls");
-		UpdateClientInfo();
+		checkPermission(enPermissions::PERMISSION_Update) ? UpdateClientInfo() : DeniedPermissions();
 		BackToMainMenue();
 	case enMainMenueOptions::eFindClient:
 		system("cls");
-		FindClient();
+		checkPermission(enPermissions::PERMISSION_Find) ? FindClient() : DeniedPermissions();
 		BackToMainMenue();
-
 	case enMainMenueOptions::eTransactions:
 		system("cls");
-		checkPermission(enPermissions::PERMISSION_Find) ? Transactions() : DeniedPermissions();
+		checkPermission(enPermissions::PERMISSION_Transactions) ? Transactions() : DeniedPermissions();
 		BackToMainMenue();
-
 	case enMainMenueOptions::eMangeUsers:
 		system("cls");
-		MangeUsers();
+		checkPermission(enPermissions::PERMISSION_MangeUsers) ? MangeUsers() : DeniedPermissions();
 		BackToMainMenue();
-
-
 	case enMainMenueOptions::eExiting:
 		system("cls");
 		LoginScreen();

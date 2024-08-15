@@ -5,12 +5,14 @@
 sUser CurrentUser;
 //  ⁄—Ì› enum ··√–Ê‰« 
 enum enPermissions {
-	PERMISSION_ListUsers = 1 << 0, // 000001 -> 1
-	PERMISSION_Add = 1 << 1, // 000010 -> 2
-	PERMISSION_Delete = 1 << 2, // 000100 -> 4
-	PERMISSION_Update = 1 << 3, // 001000 -> 8
-	PERMISSION_Find = 1 << 4, // 010000 -> 16
-	PERMISSION_Transactions = 1 << 5, // 100000 -> 32
+	PERMISSION_ListUsers = 1 << 0, // 0000001 -> 1
+	PERMISSION_Add = 1 << 1, // 0000010 -> 2
+	PERMISSION_Delete = 1 << 2, // 0000100 -> 4
+	PERMISSION_Update = 1 << 3, // 0001000 -> 8
+	PERMISSION_Find = 1 << 4, // 0010000 -> 16
+	PERMISSION_Transactions = 1 << 5, // 0100000 -> 32
+	PERMISSION_MangeUsers = 1 << 6, // 1000000 -> 64
+	PERMISSION_AllPermissions = (1 << 0 | 1 << 1 | 1 << 2 | 1 << 3 | 1 << 4 | 1 << 5 | 1 << 6), // 1111111 -> 127
 };
 
 struct sPermissions {
@@ -20,11 +22,12 @@ struct sPermissions {
 	enPermissions Update;
 	enPermissions FIND;
 	enPermissions Transactions;
+	enPermissions MangeUsers;
 };
 
 // œ«·… ·Ê÷⁄ «·√–Ê‰« 
 int setPermissions(sPermissions Permissions) {
-	return Permissions.ListUsers | Permissions.Add | Permissions.Delete | Permissions.Update | Permissions.FIND | Permissions.Transactions;
+	return Permissions.ListUsers | Permissions.Add | Permissions.Delete | Permissions.Update | Permissions.FIND | Permissions.Transactions | Permissions.MangeUsers;
 }
 
 // œ«·… ·· Õﬁﬁ „‰ «·√–Ê‰« 
@@ -43,12 +46,27 @@ int removePermissions(int permissions, enPermissions permToRemove) {
 
 int ReadPermissions() {
 	sPermissions Permissions;
-	Permissions.ListUsers = ReadBool("ARE YOU Permission FOR Show USER?") ? enPermissions::PERMISSION_ListUsers : enPermissions(0);
-	Permissions.Add = ReadBool("ARE YOU Permission FOR Add USER?") ? enPermissions::PERMISSION_Add : enPermissions(0);
-	Permissions.Delete = ReadBool("ARE YOU Permission FOR Delete USER?") ? enPermissions::PERMISSION_Delete : enPermissions(0);
-	Permissions.Update = ReadBool("ARE YOU Permission FOR Update USER?") ? enPermissions::PERMISSION_Update : enPermissions(0);
-	Permissions.FIND = ReadBool("ARE YOU Permission FOR Find USER?") ? enPermissions::PERMISSION_Find : enPermissions(0);
-	Permissions.Transactions = ReadBool("ARE YOU Permission FOR Transactions?") ? enPermissions::PERMISSION_ListUsers : enPermissions(0);
+	bool AllPermissions = ReadBool("ARE YOU GIVE All Permissions FOR This USER?");
+	if (AllPermissions) {
+		Permissions.ListUsers = enPermissions::PERMISSION_AllPermissions;
+		Permissions.Add = enPermissions(0);
+		Permissions.Delete = enPermissions(0);
+		Permissions.Update = enPermissions(0);
+		Permissions.FIND = enPermissions(0);
+		Permissions.Transactions = enPermissions(0);
+		Permissions.MangeUsers = enPermissions(0);
+ 	}
+	else
+	{
+		Permissions.ListUsers = ReadBool("ARE YOU Permission FOR Show USER?") ? enPermissions::PERMISSION_ListUsers : enPermissions(0);
+		Permissions.Add = ReadBool("ARE YOU Permission FOR Add USER?") ? enPermissions::PERMISSION_Add : enPermissions(0);
+		Permissions.Delete = ReadBool("ARE YOU Permission FOR Delete USER?") ? enPermissions::PERMISSION_Delete : enPermissions(0);
+		Permissions.Update = ReadBool("ARE YOU Permission FOR Update USER?") ? enPermissions::PERMISSION_Update : enPermissions(0);
+		Permissions.FIND = ReadBool("ARE YOU Permission FOR Find USER?") ? enPermissions::PERMISSION_Find : enPermissions(0);
+		Permissions.Transactions = ReadBool("ARE YOU Permission FOR Transactions?") ? enPermissions::PERMISSION_Transactions : enPermissions(0);
+		Permissions.MangeUsers = ReadBool("ARE YOU Permission FOR MangeUsers?") ? enPermissions::PERMISSION_MangeUsers : enPermissions(0);
+
+	}
 	return setPermissions(Permissions);
 }
 

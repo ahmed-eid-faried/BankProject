@@ -12,7 +12,7 @@ using namespace std;
 
 
 
-sUser FindUserByName(vector<string>& vFile, string Name) {
+sUser FindUserByName(vector<string>& vFile, string Name, bool AppearMessage = true) {
 	int Counter = 0;
 	sUser ResultUser;
 	for (string& Line : vFile) {
@@ -21,18 +21,18 @@ sUser FindUserByName(vector<string>& vFile, string Name) {
 			sUser User = ConvertLineToUserRecord(Line, Seperator);
 			if (User.Name == Name) {
 				ResultUser = User;
-				PrintUser(User);
-				cout << endl;
+				if (AppearMessage) PrintUser(User);
+				if (AppearMessage)	cout << endl;
 				Counter++;
 			}
 
 		}
 	}
-	if (Counter == 0) {
+	if (Counter == 0 && AppearMessage) {
 		cout << "\nUser with Account Number (" << Name << ") is Not Found!";
 	}
-	cout << "\n_______________________________________________________";
-	cout << "_________________________________________\n" << endl;
+	if (AppearMessage) cout << "\n_______________________________________________________";
+	if (AppearMessage) cout << "_________________________________________\n" << endl;
 	return ResultUser;
 }
 
@@ -48,4 +48,3 @@ void FindUser() {
 	cout << endl;
 
 }
- 

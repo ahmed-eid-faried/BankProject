@@ -9,11 +9,11 @@
 #include "Permsions.h"
 using namespace std;
 
-sUser FindUserByName(vector<string>& vFile, string Name);
+sUser FindUserByName(vector<string>& vFile, string Name, bool AppearMessage);
 bool IsFindUserByName(string Name) {
 	vector<string> vFile;
 	DataFromFileToVector(UsersFileName, vFile);
-	sUser User = FindUserByName(vFile, Name);
+	sUser User = FindUserByName(vFile, Name, false);
 	bool state = User.Name == Name;
 	return state;
 }
@@ -29,7 +29,7 @@ void AddUser() {
 	cout << "\nPlease Enter User Data:  " << endl;
 	sUser User;
 	User = ReadNewUser();
-	if (!IsFindUserByName(User.Name)) {
+	if (IsFindUserByName(User.Name)) {
 		cout << "\n\nUser already exists.\n";
 	}
 	cout << "\n\nUser Record for Saving is: \n";

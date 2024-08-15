@@ -29,24 +29,23 @@ void RoutingMangeUsers(enMangeUsersMenueOptions Option) {
 	{
 	case enMangeUsersMenueOptions::eListUsers:
 		system("cls");
-		checkPermission(enPermissions::PERMISSION_ListUsers) ? ListUsers() : DeniedPermissions();
+		ListUsers();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::eAddNewUser:
 		system("cls");
 		AddNewUser();
-		checkPermission(enPermissions::PERMISSION_Add) ? AddNewUser() : DeniedPermissions();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::eDeleteUser:
 		system("cls");
-		checkPermission(enPermissions::PERMISSION_Delete) ? DeleteUser() : DeniedPermissions();
+		DeleteUser();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::eUpdateUser:
 		system("cls");
-		checkPermission(enPermissions::PERMISSION_Update) ? UpdateUser() : DeniedPermissions();
+		UpdateUser();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::eFindUser:
 		system("cls");
-		checkPermission(enPermissions::PERMISSION_Find) ? FindUser() : DeniedPermissions();
+		FindUser();
 		BackToMangeUsersMenue();
 	case enMangeUsersMenueOptions::enMainMenue:
 		system("cls");

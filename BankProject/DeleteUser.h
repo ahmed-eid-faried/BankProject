@@ -55,7 +55,11 @@ void DeleteUser() {
 	cout << "====================================================" << endl;
 	vector <sUser> vUsers = LoadUsersDataFromFile(UsersFileName);
 	string Name = ReadString("\nPlease enter AccountNumber? ");
-	DeleteUserByName(Name, vUsers);
+	if(Name=="admin") {
+		cout << "you cann't remove admin user." << endl;
+	} else {
+	DeleteUserByName(Name, vUsers);	
+	}
 
 }
  

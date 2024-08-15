@@ -83,10 +83,10 @@
     <ClInclude Include="FindUser.h">
       <Filter>Header Files\mange_users</Filter>
     </ClInclude>
-    <ClInclude Include="Permsions.h">
-      <Filter>Header Files\mange_users</Filter>
-    </ClInclude>
     <ClInclude Include="login.h">
+      <Filter>Header Files\login</Filter>
+    </ClInclude>
+    <ClInclude Include="Permsions.h">
       <Filter>Header Files\login</Filter>
     </ClInclude>
   </ItemGroup>
