@@ -97,7 +97,7 @@ sUser ConvertLineToUserRecord(string strUserRecord, string Seperator) {
 	sUser User;
 	User.Name = sListOfRecord[0];
 	User.Password = sListOfRecord[1];
-	User.Permissions  = stoi(sListOfRecord[2]);
+	User.Permissions = stoi(sListOfRecord[2]);
 	return User;
 }
 
@@ -135,7 +135,7 @@ string ConvertRecordToLineUser(sUser User, string Seperator) {
 	string strUserRecord = "";
 	strUserRecord += User.Name + Seperator;
 	strUserRecord += User.Password + Seperator;
-	strUserRecord += to_string(User.Permissions );
+	strUserRecord += to_string(User.Permissions);
 	return strUserRecord;
 }
 string  ReadClientAccountNumber() {
@@ -172,7 +172,7 @@ vector <sClient> LoadCleintsDataFromFile(string FileName) {
 		MyFile.close();
 	} return vClients;
 }
- 
+
 vector <sUser> LoadUsersDataFromFile(string FileName) {
 	vector <sUser> vUsers;
 	fstream MyFile;
@@ -200,7 +200,7 @@ void PrintUserCard(sUser User) {
 	cout << "\nThe following are the client details:\n";
 	cout << "\nName         : " << User.Name;
 	cout << "\nPassword     : " << User.Password;
-	cout << "\nPermissions     : " << User.Permissions ;
+	cout << "\nPermissions     : " << User.Permissions;
 }
 vector <sClient> SaveCleintsDataToFile(string FileName, vector<sClient> vClients) {
 	fstream MyFile;
@@ -245,4 +245,12 @@ void BackToMainMenue() {
 	system("cls"); // Clear the screen
 	//system("pause>0");
 	ShowMainMenue();
+}
+
+void Exiting() {
+	cout << "Exiting the CLI" << endl;
+	cout << "====================================================" << endl;
+	cout << "\t\tEND PROGRAM:(\n";
+	cout << "====================================================" << endl;
+	exit(0);
 }

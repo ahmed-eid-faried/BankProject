@@ -1,8 +1,10 @@
 #include "main.h"
+#include "login.h"
 
 
 int main()
 {
-	ShowMainMenue();
+	//ShowMainMenue();
+	LoginScreen();
 	return 0;
 }

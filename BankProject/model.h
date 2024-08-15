@@ -18,16 +18,9 @@ struct sClient {
 struct sUser {
 	string  Name;
 	string  Password;
-	int Permissions ;
+	int Permissions;
 	bool MarkForDelete = false;
 	bool MarkForUpdate = false;
 };
 
-struct sPermissions {
-	enPermissions ListUsers = enPermissions(0);
-	enPermissions Add = enPermissions(0);
-	enPermissions Delete = enPermissions(0);
-	enPermissions Update = enPermissions(0);
-	enPermissions Find = enPermissions(0);
-	enPermissions Transactions = enPermissions(0);
-};
+

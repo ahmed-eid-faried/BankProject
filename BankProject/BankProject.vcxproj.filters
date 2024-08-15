@@ -19,6 +19,9 @@
     <Filter Include="Header Files\mange_users">
       <UniqueIdentifier>{ec466f02-f569-4c71-8e23-fc502ca8b2a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\login">
+      <UniqueIdentifier>{74e88177-1fb3-49f3-8579-d6e4e9d52a8a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankProject.cpp">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="Permsions.h">
       <Filter>Header Files\mange_users</Filter>
+    </ClInclude>
+    <ClInclude Include="login.h">
+      <Filter>Header Files\login</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

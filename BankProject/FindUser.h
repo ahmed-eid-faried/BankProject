@@ -12,13 +12,15 @@ using namespace std;
 
 
 
-void FindUserByName(vector<string>& vFile, string Name) {
+sUser FindUserByName(vector<string>& vFile, string Name) {
 	int Counter = 0;
+	sUser ResultUser;
 	for (string& Line : vFile) {
 		if (!Line.empty())
 		{
 			sUser User = ConvertLineToUserRecord(Line, Seperator);
 			if (User.Name == Name) {
+				ResultUser = User;
 				PrintUser(User);
 				cout << endl;
 				Counter++;
@@ -31,7 +33,9 @@ void FindUserByName(vector<string>& vFile, string Name) {
 	}
 	cout << "\n_______________________________________________________";
 	cout << "_________________________________________\n" << endl;
+	return ResultUser;
 }
+
 void FindUser() {
 	cout << "====================================================" << endl;
 	cout << "\t\Find User\n";

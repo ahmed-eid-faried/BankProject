@@ -143,6 +143,7 @@
     <ClInclude Include="FindUser.h" />
     <ClInclude Include="libs.h" />
     <ClInclude Include="ListUsers.h" />
+    <ClInclude Include="login.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="Permsions.h" />

@@ -8,6 +8,7 @@
 #include "6.h"
 #include "7.h"
 using namespace std;
+void LoginScreen();
 enum enMainMenueOptions {
 	eShowClients = 1,
 	eAddNewClient = 2,
@@ -52,7 +53,7 @@ void Routing(enMainMenueOptions Option) {
 
 	case enMainMenueOptions::eTransactions:
 		system("cls");
-		Transactions();
+		checkPermission(enPermissions::PERMISSION_Find) ? Transactions() : DeniedPermissions();
 		BackToMainMenue();
 
 	case enMainMenueOptions::eMangeUsers:
@@ -62,11 +63,9 @@ void Routing(enMainMenueOptions Option) {
 
 
 	case enMainMenueOptions::eExiting:
-		cout << "Exiting the CLI" << endl;
-		cout << "====================================================" << endl;
-		cout << "\t\tEND PROGRAM:(\n";
-		cout << "====================================================" << endl;
-		exit(0);
+		system("cls");
+		LoginScreen();
+		//Exiting();
 	default:
 		break;
 	}
@@ -82,7 +81,7 @@ void ShowMainMenue() {
 	cout << "\t   [5] Find Client." << endl;
 	cout << "\t   [6] Transactions Menue." << endl;
 	cout << "\t   [7] Mange Users Menue." << endl;
-	cout << "\t   [8] Exit." << endl;
+	cout << "\t   [8] Logout." << endl;
 	cout << "====================================================" << endl;
 	enMainMenueOptions Option = (enMainMenueOptions)ReadNumberInRange(1, 8, "Choose what do you want to do? [1 to 8]? ");
 	Routing(Option);

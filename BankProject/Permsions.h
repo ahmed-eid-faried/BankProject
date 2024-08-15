@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include "model.h"
+
 sUser CurrentUser;
 //  ⁄—Ì› enum ··√–Ê‰« 
 enum enPermissions {
@@ -11,13 +13,22 @@ enum enPermissions {
 	PERMISSION_Transactions = 1 << 5, // 100000 -> 32
 };
 
+struct sPermissions {
+	enPermissions ListUsers;
+	enPermissions Add;
+	enPermissions Delete;
+	enPermissions Update;
+	enPermissions FIND;
+	enPermissions Transactions;
+};
+
 // œ«·… ·Ê÷⁄ «·√–Ê‰« 
 int setPermissions(sPermissions Permissions) {
-	return Permissions.ListUsers | Permissions.Add | Permissions.Delete | Permissions.Update | Permissions.Find | Permissions.Transactions;
+	return Permissions.ListUsers | Permissions.Add | Permissions.Delete | Permissions.Update | Permissions.FIND | Permissions.Transactions;
 }
 
 // œ«·… ·· Õﬁﬁ „‰ «·√–Ê‰« 
-bool checkPermission( enPermissions permission, int permissions = CurrentUser.Permissions) {
+bool checkPermission(enPermissions permission, int permissions = CurrentUser.Permissions) {
 	return (permissions & permission) != 0;
 }
 // œ«·… ·≈÷«›… √–Ê‰«  ÃœÌœ…
@@ -36,7 +47,7 @@ int ReadPermissions() {
 	Permissions.Add = ReadBool("ARE YOU Permission FOR Add USER?") ? enPermissions::PERMISSION_Add : enPermissions(0);
 	Permissions.Delete = ReadBool("ARE YOU Permission FOR Delete USER?") ? enPermissions::PERMISSION_Delete : enPermissions(0);
 	Permissions.Update = ReadBool("ARE YOU Permission FOR Update USER?") ? enPermissions::PERMISSION_Update : enPermissions(0);
-	Permissions.Find = ReadBool("ARE YOU Permission FOR Find USER?") ? enPermissions::PERMISSION_Find : enPermissions(0);
+	Permissions.FIND = ReadBool("ARE YOU Permission FOR Find USER?") ? enPermissions::PERMISSION_Find : enPermissions(0);
 	Permissions.Transactions = ReadBool("ARE YOU Permission FOR Transactions?") ? enPermissions::PERMISSION_ListUsers : enPermissions(0);
 	return setPermissions(Permissions);
 }
