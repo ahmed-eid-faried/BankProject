@@ -13,12 +13,14 @@ sClient ReadDepositClient(sClient vClient, double DepositValue) {
 	client.PinCode = vClient.PinCode;
 	client.Name = vClient.Name;
 	client.Phone = vClient.Phone;
-	bool CheckBalance = ((vClient.AccountBalance + DepositValue) >= 0);
-	if (!CheckBalance) {
-		cout << "Please Enter Correct Withdraw Value" << endl;
-		WithdrawFun();
+	if ((vClient.AccountBalance + DepositValue) < 0) {
+		client.AccountBalance = vClient.AccountBalance;
+		cout << "The value you entered is incorrect." << endl;
+		BackToMainMenue();
 	}
-	client.AccountBalance = CheckBalance ? vClient.AccountBalance + DepositValue : vClient.AccountBalance;
+	else {
+		client.AccountBalance = vClient.AccountBalance + DepositValue;
+ 	}
 	return client;
 };
 
